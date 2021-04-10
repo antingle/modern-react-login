@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import '../css/login.css';
 
 async function loginUser(credentials) {
@@ -8,7 +8,7 @@ async function loginUser(credentials) {
  }
 
  // Login component
-export default function Login({ setIsAuth }) {
+export default function Login({ isAuth, setIsAuth }) {
 
   // Stores React DOM history
   const history = useHistory();
@@ -31,6 +31,10 @@ export default function Login({ setIsAuth }) {
     setIsAuth(token);
     history.push('/');
   };
+
+  if (isAuth) {   
+    return <Redirect to="/" />
+}
 
   return (
     <div className="login-wrapper">
