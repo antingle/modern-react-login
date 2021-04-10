@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Route, Switch } from "react-router";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import SignIn from "./pages/SignIn";
 import Register from "./pages/Register";
 import ProtectedRoute from './components/ProtectedRoute';
+import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
 
@@ -17,11 +18,12 @@ function App() {
 
   return (
     <div className="wrapper">
-      <Navbar isAuth={isAuth} setIsAuth={setIsAuth}/>
+      {(isAuth) && <Navbar isAuth={isAuth} setIsAuth={setIsAuth}/>}
       <Switch>
         <ProtectedRoute exact path='/' component={Home} isAuth={isAuth}/>
-        <Route path='/login'><Login isAuth={isAuth} setIsAuth={setIsAuth}/></Route>
+        <Route path='/signin'><SignIn isAuth={isAuth} setIsAuth={setIsAuth}/></Route>
         <Route path='/register'><Register isAuth={isAuth} setIsAuth={setIsAuth}/></Route>
+        <Route path='/forgotpassword' component={ForgotPassword}/>
       </Switch>
     </div>
   );

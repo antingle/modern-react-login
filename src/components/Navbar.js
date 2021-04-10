@@ -12,7 +12,7 @@ export default function Navbar({isAuth, setIsAuth}) {
         <nav>
             <h1>Medical Simulations</h1>
             <Link to='/'>Home</Link>
-            {(!isAuth) && <Link to='/login'>Login</Link>}
+            {(!isAuth) && <Link to='/signin'>Sign In</Link>}
             {(!isAuth) && <Link to='/register'>Register</Link>}
             {(isAuth) && <button onClick={logout}>Logout</button>}
         </nav>
