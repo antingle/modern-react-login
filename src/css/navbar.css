@@ -1,0 +1,9 @@
+nav {
+    background-color: rgb(168, 168, 168);
+    padding: 1em;
+    text-align: center;
+}
+
+nav a {
+    padding: 1em;
+}

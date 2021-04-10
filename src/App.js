@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Route, Switch } from "react-router";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
+
+  // require authentication
+  const [isAuth, setIsAuth] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <Navbar isAuth={isAuth} setIsAuth={setIsAuth}/>
+      <Switch>
+        <ProtectedRoute exact path='/' component={Home} isAuth={isAuth}/>
+        <Route path='/login'><Login setIsAuth={setIsAuth}/></Route>
+        <Route path='/register' component={Register} />
+      </Switch>
     </div>
   );
 }
