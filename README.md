@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# John Hopkins All Children's Hospital Simulation Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Step 1: Sign in and register pages created 
+
+![Sign In Screenshot](../readme/sign-in-screenshot)
 
 ## Available Scripts
 
