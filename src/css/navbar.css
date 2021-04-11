@@ -1,9 +1,21 @@
 nav {
-    background-color: rgb(168, 168, 168);
+    background-color: var(--submit);
+    color: white;
     padding: 1em;
     text-align: center;
 }
 
+nav h1 {
+    margin-bottom: 1em;
+}
+
 nav a {
     padding: 1em;
+    color: white;
+}
+nav button {
+    padding: 1em;
+    border: none;
+    background-color: white;
+    cursor: pointer;
 }
