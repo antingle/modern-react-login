@@ -2,7 +2,7 @@
 
 Step 1: Sign in and register pages created 
 
-![Sign In Screenshot](/readme/sign-in-screenshot)
+![Sign In Screenshot](/readme/sign-in-screenshot.png)
 
 ## Available Scripts
 
