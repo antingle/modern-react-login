@@ -1,0 +1,21 @@
+.card {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 0.5fr 1fr 1fr;
+    border: 1px solid var(--light-gray);
+    border-radius: 12px;
+    max-width: 35em;
+    padding: 1em;
+    margin: auto;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.card:hover {
+    border: 1px solid var(--gray);
+}
+
+.card img {
+    height: 4em;
+    border-radius: 50%;
+}

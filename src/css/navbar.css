@@ -1,21 +1,26 @@
 nav {
-    background-color: var(--submit);
-    color: white;
-    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     text-align: center;
+    border-bottom: 5px solid var(--submit);
+    padding: 1em;
 }
 
 nav h1 {
-    margin-bottom: 1em;
+    color: var(--black);
 }
 
 nav a {
     padding: 1em;
-    color: white;
+    color: var(--submit);
 }
 nav button {
-    padding: 1em;
+    color: white;
+    background-color: var(--submit);
+    font-size: 12px;
+    padding: 1em 3em 1em 3em;
+    border-radius: 12px;
     border: none;
-    background-color: white;
     cursor: pointer;
 }
