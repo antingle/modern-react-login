@@ -1,11 +1,8 @@
+import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import '../css/auth.css';
-
-async function loginUser(credentials) {
-  console.log('send credentials to backend, register user and return token');
-  return true;
- }
+import { add_student } from '../graphql/add_student';
 
  // Login component
 export default function Register({ isAuth, setIsAuth }) {
@@ -19,7 +16,11 @@ export default function Register({ isAuth, setIsAuth }) {
     username: "",
     password: "",
     confirm_pass: "",
+    teacher_code:""
   });
+
+    const [register, { loading, error, data }] = useMutation(add_student);
+   
 
   // Updates form values
   const onChange = (e) => {
@@ -29,9 +30,13 @@ export default function Register({ isAuth, setIsAuth }) {
   // Submit function
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = await loginUser(values);
-    setIsAuth(token);
-    history.push("/");
+    await register({ variables: values });
+    if (error) console.log(error);
+    if (!data) console.log('no data');
+      else console.log(data);
+      
+      setIsAuth(true);
+      history.push("/");
   };
 
   if (isAuth) {
@@ -92,7 +97,18 @@ export default function Register({ isAuth, setIsAuth }) {
           />
           <label htmlFor="confirm_pass">Confirm Password</label>
         </div>
+        <div className="text-field">
+          <input
+            required
+            type="text"
+            name="teacher_code"
+            value={values.teacher_code}
+            onChange={onChange}
+          />
+          <label htmlFor="code">Invitation Code</label>
+        </div>
         <button type="submit">Create Account</button>
+        {(loading) && <p>loading</p>}
         <span className="linebreak">OR</span>
         <Link className="create-account" to="/signin">
           Go to Sign In

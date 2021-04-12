@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './css/index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 const client = new ApolloClient({
   uri: 'http://localhost:5000',
@@ -12,11 +12,11 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <ApolloClient client={client}> */}
+    <ApolloProvider client={client}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    {/* </ApolloClient> */}
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
