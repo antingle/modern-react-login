@@ -1,4 +1,4 @@
-# John Hopkins All Children's Hospital Simulation Project
+# Modern Login and Register page to authenticated website
 
 Step 1: Sign in and register pages created 
 
