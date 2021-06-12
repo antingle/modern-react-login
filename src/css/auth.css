@@ -59,6 +59,10 @@ form button:hover {
     background-color: var(--submit-hover);
 }
 
+form button:disabled {
+    opacity: 0.5;
+  }
+
 form h1 {
     margin-bottom: 1em;
     text-align: center;
@@ -138,3 +142,21 @@ form input:valid ~ label {
     color: white;
     background-color: var(--black);
 }
+
+/*== Loader ==*/
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader {
+    display: inline-block;
+    border: 2px solid #fff;
+    border-top: 2px solid #f3f3f300; 
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    margin-right: 1em;
+    animation: spin 1.5s linear infinite;
+}
+  

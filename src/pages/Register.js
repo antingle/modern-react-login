@@ -1,13 +1,12 @@
-import { useMutation } from '@apollo/client';
-import React, { useState } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
-import '../css/auth.css';
-import { add_student } from '../graphql/add_student';
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import "../css/auth.css";
 
- // Login component
+// Login component
 export default function Register({ isAuth, setIsAuth }) {
   // Stores React DOM history
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
 
   // Store form values
   const [values, setValues] = useState({
@@ -16,11 +15,8 @@ export default function Register({ isAuth, setIsAuth }) {
     username: "",
     password: "",
     confirm_pass: "",
-    teacher_code:""
+    teacher_code: "",
   });
-
-    const [register, { loading, error, data }] = useMutation(add_student);
-   
 
   // Updates form values
   const onChange = (e) => {
@@ -29,19 +25,13 @@ export default function Register({ isAuth, setIsAuth }) {
 
   // Submit function
   const handleSubmit = async (e) => {
+    setLoading(true);
+    // communicate with database here
     e.preventDefault();
-    await register({ variables: values });
-    if (error) console.log(error);
-    if (!data) console.log('no data');
-      else console.log(data);
-      
-      setIsAuth(true);
-      history.push("/");
+    console.log("register");
+    setLoading(false);
+    history.push("/");
   };
-
-  if (isAuth) {
-    return <Redirect to="/" />;
-  }
 
   return (
     <div className="login-wrapper">
@@ -105,10 +95,17 @@ export default function Register({ isAuth, setIsAuth }) {
             value={values.teacher_code}
             onChange={onChange}
           />
-          <label htmlFor="code">Invitation Code</label>
+          <label htmlFor="code">Code</label>
         </div>
-        <button type="submit">Create Account</button>
-        {(loading) && <p>loading</p>}
+        <button type="submit" disabled={loading}>
+          {!loading && <span>Create Account</span>}
+          {loading && (
+            <>
+              <div className="loader"></div>
+              <span>Creating Account</span>
+            </>
+          )}
+        </button>
         <span className="linebreak">OR</span>
         <Link className="create-account" to="/signin">
           Go to Sign In

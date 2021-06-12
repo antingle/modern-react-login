@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
-import '../css/auth.css';
+import React, { useState } from "react";
+import { Link, Redirect, useHistory } from "react-router-dom";
+import "../css/auth.css";
 
 async function authUser(credentials) {
-  console.log('send credentials to backend, return token');
+  console.log("send credentials to backend, return token");
   return true;
- }
+}
 
- // Login component
+// Login component
 export default function SignIn({ isAuth, setIsAuth }) {
   // Stores React DOM history
   const history = useHistory();
@@ -37,7 +37,6 @@ export default function SignIn({ isAuth, setIsAuth }) {
 
   return (
     <div className="login-wrapper">
-      {/* <h1>John Hopkin's Nurse Simulation</h1> */}
       <form onSubmit={handleSubmit}>
         <h1>Sign In</h1>
         <div className="text-field">
@@ -61,7 +60,9 @@ export default function SignIn({ isAuth, setIsAuth }) {
           <label htmlFor="password">Password</label>
         </div>
         <button type="submit">Sign In</button>
-        <Link className="forgot-password" to='/forgotpassword'>Forgot password?</Link>
+        <Link className="forgot-password" to="/forgotpassword">
+          Forgot password?
+        </Link>
         <span className="linebreak">OR</span>
         <Link className="create-account" to="/register">
           Create Account
